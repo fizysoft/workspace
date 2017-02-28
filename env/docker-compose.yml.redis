@@ -1,5 +1,11 @@
 version: '3'
 services:
+  redis:
+    container_name: redis
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
   mailhog:
     container_name: mailhog
     image: mailhog/mailhog:latest
@@ -33,16 +39,3 @@ services:
       - ../projects/log:/var/www/log
     depends_on:
       - php-fpm
-
-  mysql:
-    container_name: mysql
-    image: mysql:5.6
-    ports:
-      - "3306:3306"
-    volumes:
-      - ../mysql/data:/var/lib/mysql
-      - ../mysql/dbdump:/dbdump
-      - ./config/mysql/conf.d:/etc/mysql/conf.d
-    environment:
-      #- MYSQL_RANDOM_ROOT_PASSWORD=yes
-      - MYSQL_ROOT_PASSWORD=balance08
