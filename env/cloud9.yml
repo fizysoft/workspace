@@ -1,0 +1,11 @@
+cloud9:
+  container_name: cloud9
+  image: hoadx/cloud9
+  ports:
+    - "8000:8000"
+  environment:
+    USERNAME:
+    PASSWORD:
+  volumes:
+    - ../projects:/workspace
+    - ~/.ssh:/root/.ssh

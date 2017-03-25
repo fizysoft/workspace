@@ -1,0 +1,8 @@
+projects/.c9/*
+.DS_Store
+projects/m1/*
+projects/m2/*
+projects/log/*
+mailhog/email/*
+mysql/data/*
+mysql/dbdump/*
