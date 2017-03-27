@@ -2,6 +2,7 @@ projects/.c9/*
 .DS_Store
 projects/m1/*
 projects/m2/*
+projects/others/*
 projects/log/*
 mailhog/email/*
 mysql/data/*
