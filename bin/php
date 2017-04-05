@@ -1,0 +1,14 @@
+#!/bin/bash
+export PATH=$PATH
+echo "Current working directory: '"$(pwd)"'"
+test=$1
+if [ `echo $1 | grep -c "-"` -gt 0 ] && [ ${#test} -eq 2 ]
+then
+   docker exec -u www php-fpm php $1
+else
+  currentdir=$(pwd)
+  workingdir=/var/www/${currentdir##*projects/}
+  command="docker exec -u www php-fpm bash -c 'cd $workingdir; php $@'"
+  echo $command
+  eval $command
+fi
