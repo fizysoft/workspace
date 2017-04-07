@@ -7,3 +7,4 @@ projects/log/*
 mailhog/email/*
 mysql/data/*
 mysql/dbdump/*
+ssl/*
