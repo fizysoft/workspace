@@ -1,5 +1,0 @@
-letsencrypt:
-  container_name: letsencrypt
-  image: sebble/letsencrypt-certbot-alpine
-  ports:
-    - "80:80"

@@ -1,0 +1,8 @@
+letsencrypt:
+  container_name: letsencrypt
+  image: sebble/letsencrypt-certbot-alpine
+#  ports:
+#    - "8080:80"
+  volumes:
+    - ../projects/others/.well-known:/var/.well-known
+    - ../ssl:/etc/letsencrypt
