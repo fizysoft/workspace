@@ -1,8 +1,9 @@
 letsencrypt:
   container_name: letsencrypt
-  image: sebble/letsencrypt-certbot-alpine
+  image: hoadx/letsencrypt
 #  ports:
-#    - "8080:80"
+#    - "80:80"
+#    - "443:443"
   volumes:
     - ../projects/others/.well-known:/var/.well-known
     - ../ssl:/etc/letsencrypt
