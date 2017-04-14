@@ -1,0 +1,11 @@
+version: '3'
+services:
+  varnish:
+    container_name: varnish
+    image: registry.docker.balancenet.com.au:5000/library/varnish:4.0-2.0.0
+    ports:
+      - "80:80"
+    volumes:
+      - ./config/varnish/default.vcl:/etc/varnish/config/custom.vcl
+    links:
+      - nginx
