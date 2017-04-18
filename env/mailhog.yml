@@ -1,0 +1,12 @@
+version: '3'
+services:
+  mailhog:
+    container_name: mailhog
+    image: mailhog/mailhog:latest
+    ports:
+      - 8025:8025
+    volumes:
+        - ../mailhog/email:/mnt/storage
+    environment:
+      - MH_STORAGE=maildir
+      - MH_MAILDIR_PATH=/mnt/storage

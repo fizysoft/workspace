@@ -1,0 +1,11 @@
+version: '3'
+services:
+  php-fpm:
+    container_name: php-fpm
+    image: registry.docker.balancenet.com.au:5000/library/php-fpm:5.6-2.8.0
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./config/phpfpm/magento.php.ini:/etc/php.d/zzmagento.php.ini
+      - ./config/phpfpm/ioncube.php.ini:/etc/php.d/00ioncube.php.ini
+      - ../projects:/var/www
