@@ -1,6 +1,6 @@
 version: '3'
 services:
-  mysql:
+  portainer:
     container_name: portainer
     image: portainer/portainer
     ports:
