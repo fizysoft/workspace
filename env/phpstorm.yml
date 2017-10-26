@@ -1,3 +1,8 @@
+# For Mac only:
+# Install XQuartz 2.7.11 or above
+# Open XQuartz Preferences -> Security tab, tick `Authenticate connections` and `Allow connections from network clients` 
+# Run below command in Terminal:
+# export DISPLAY=$(ifconfig | grep 'inet ' | grep -m 1 -v '127.0.0.1' | awk '{print $2}'):0  && xhost +
 version: '3'
 services:
   phpstorm:
