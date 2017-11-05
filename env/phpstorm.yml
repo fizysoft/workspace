@@ -2,7 +2,7 @@
 # Install XQuartz 2.7.11 or above
 # Open XQuartz Preferences -> Security tab, tick `Authenticate connections` and `Allow connections from network clients` 
 # Run below command in Terminal:
-# xhost + && export DISPLAY=$(ifconfig | grep 'inet ' | grep -m 1 -v '127.0.0.1' | awk '{print $2}'):0 
+# export DISPLAY=:0 && xhost + && export DISPLAY=$(ifconfig | grep 'inet ' | grep -m 1 -v '127.0.0.1' | awk '{print $2}'):0 
 version: '3'
 services:
   phpstorm:
@@ -11,6 +11,9 @@ services:
     volumes:
       - ~/.PhpStorm2017.2:/home/www/.PhpStorm2017.2
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ~/workspace/projects:/home/www/projects
+      - projects:/home/www/projects
     environment:
       - DISPLAY=$DISPLAY
+
+volumes:
+  projects:
