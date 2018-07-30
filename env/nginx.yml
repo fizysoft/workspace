@@ -2,7 +2,7 @@ version: '3'
 services:
   nginx:
     container_name: nginx
-    image: registry.docker.balancenet.com.au:5000/library/nginx-web:1.8-2.0.0
+    image: hoadx/nginx
     ports:
       - "80:80"
     volumes:
