@@ -1,3 +1,9 @@
 version: '3'
 networks:
   default:
+
+#volumes:                 # MAC only
+#  data:                  # MAC only
+#    external: true       # MAC only
+#  database:              # MAC only
+#    external: true       # MAC only

@@ -11,9 +11,9 @@ services:
     volumes:
       - ~/.PhpStorm2017.2:/home/www/.PhpStorm2017.2
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - data-volume:/home/www/projects
+      #- data:/home/www/projects  # MAC only
+      - ${WORKSPACE_PATH}/projects:/home/www/projects   # UNIX only
     environment:
       - DISPLAY=$DISPLAY
-
-volumes:
-  data-volume:
+    networks:
+      - default

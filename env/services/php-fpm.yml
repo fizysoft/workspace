@@ -6,8 +6,9 @@ services:
     ports:
       - "9000:9000"
     volumes:
-      - ../config/phpfpm/magento.php.ini:/usr/local/etc/php/conf.d/zzz.ini
+      - ${WORKSPACE_PATH}/env/config/phpfpm/magento.php.ini:/usr/local/etc/php/conf.d/zzz.ini
       #- ./config/phpfpm/ioncube.php.ini:/usr/local/etc/php/conf.d/00ioncube.php.ini
-      - ../../projects:/var/www
+      - ${WORKSPACE_PATH}/projects:/var/www    # UNIX only
+      #- data:/var/www    # MAC only
     networks:
       - default

@@ -6,9 +6,10 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ../mysql/data:/var/lib/mysql
-      - ../mysql/dbdump:/dbdump
-      - ./config/mysql/conf.d:/etc/mysql/conf.d
+      - ${WORKSPACE_PATH}/mysql/data:/var/lib/mysql  # UNIX only
+      #- database:/var/lib/mysql    # MAC only
+      - ${WORKSPACE_PATH}/mysql/dbdump:/dbdump
+      - ${WORKSPACE_PATH}/env/config/mysql/conf.d:/etc/mysql/conf.d
     environment:
       #- MYSQL_RANDOM_ROOT_PASSWORD=yes
       - MYSQL_ROOT_PASSWORD=balance08

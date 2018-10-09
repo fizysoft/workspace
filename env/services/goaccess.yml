@@ -6,7 +6,9 @@ services:
     ports:
       - "7890:7890"
     volumes:
-      - ../config/goaccess/:/srv/data
-      - ../../projects/others:/srv/report   # output /srv/report/goaccess.html
-      - ../../log:/srv/logs
+      - ${WORKSPACE_PATH}/env/config/goaccess/:/srv/data
+      - ${WORKSPACE_PATH}/projects/others:/srv/report   # output /srv/report/goaccess.html
+      - ${WORKSPACE_PATH}/log:/srv/logs
 #    command: ["goaccess", "--no-global-config", "--real-time-html", "--config-file=/srv/data/goaccess.conf", "--log-file=/srv/logs/access.log"]
+    networks:
+      - default

@@ -9,10 +9,8 @@ services:
       USERNAME:
       PASSWORD:
     volumes:
-      #- ../../projects:/workspace
-      - data-volume:/workspace
+      - ${WORKSPACE_PATH}/projects:/workspace   # UNIX only
+      #- data:/workspace   # MAC only
       - ~/.ssh:/root/.ssh
-
-volumes:
-  data-volume:
-    driver: local
+    networks:
+      - default

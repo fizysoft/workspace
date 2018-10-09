@@ -6,4 +6,6 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ../config/varnish/default.vcl:/etc/varnish/config/custom.vcl
+      - ${WORKSPACE_PATH}/env/config/varnish/default.vcl:/etc/varnish/config/custom.vcl
+    networks:
+      - default

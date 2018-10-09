@@ -6,5 +6,8 @@ services:
     ports:
       - "23:22"
     volumes:
-      - ../../projects:/home/www/projects
-      - ../config/sftp/users.conf:/etc/sftp-users.conf:ro
+      - ${WORKSPACE_PATH}/projects:/home/www/projects  # UNIX only
+      #- data:/home/www/projects  # MAC only
+      - ${WORKSPACE_PATH}/env/config/sftp/users.conf:/etc/sftp-users.conf:ro
+    networks:
+      - default

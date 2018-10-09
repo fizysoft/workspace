@@ -7,4 +7,6 @@ services:
       - "9001:9000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ../../portainer/data:/data
+      - ${WORKSPACE_PATH}/portainer/data:/data
+    networks:
+      - default

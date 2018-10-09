@@ -7,5 +7,7 @@ services:
   #    - "80:80"
   #    - "443:443"
     volumes:
-      - ../letsencrypt/.well-known:/var/.well-known
-      - ../ssl:/etc/letsencrypt
+      - ${WORKSPACE_PATH}/letsencrypt/.well-known:/var/.well-known
+      - ${WORKSPACE_PATH}/ssl:/etc/letsencrypt
+    networks:
+      - default
