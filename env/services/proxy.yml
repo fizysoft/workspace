@@ -9,6 +9,6 @@ services:
       - NGINX_HOST=proxy.server
       - NGINX_PORT=80
     volumes:
-      - ./config/proxy/conf.d:/etc/nginx/conf.d
+      - ../config/proxy/conf.d:/etc/nginx/conf.d
     command: /bin/sh -c "nginx -g 'daemon off;'"
 

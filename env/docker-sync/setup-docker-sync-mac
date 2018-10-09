@@ -1,5 +1,0 @@
-#!/bin/sh
-sudo gem install docker-sync
-brew install unison fswatch
-curl "https://raw.githubusercontent.com/hnsl/unox/master/unox.py" -o "/usr/local/bin/unison-fsmonitor" && chmod +x /usr/local/bin/unison-fsmonitor
-sudo easy_install pip && sudo pip install macfsevents

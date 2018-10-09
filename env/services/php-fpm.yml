@@ -1,0 +1,13 @@
+version: '3'
+services:
+  php-fpm:
+    container_name: php-fpm
+    image: hoadx/php:7.1-magento
+    ports:
+      - "9000:9000"
+    volumes:
+      - ../config/phpfpm/magento.php.ini:/usr/local/etc/php/conf.d/zzz.ini
+      #- ./config/phpfpm/ioncube.php.ini:/usr/local/etc/php/conf.d/00ioncube.php.ini
+      - ../../projects:/var/www
+    networks:
+      - default

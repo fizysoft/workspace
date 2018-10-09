@@ -11,9 +11,9 @@ services:
     volumes:
       - ~/.PhpStorm2017.2:/home/www/.PhpStorm2017.2
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - projects:/home/www/projects
+      - data-volume:/home/www/projects
     environment:
       - DISPLAY=$DISPLAY
 
 volumes:
-  projects:
+  data-volume:

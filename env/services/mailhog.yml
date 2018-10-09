@@ -6,7 +6,9 @@ services:
     ports:
       - 8025:8025
     volumes:
-        - ../mailhog/email:/mnt/storage
+        - ../../mailhog/storage:/mnt/storage
     environment:
       - MH_STORAGE=maildir
       - MH_MAILDIR_PATH=/mnt/storage
+    networks:
+      - default

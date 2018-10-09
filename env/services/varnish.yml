@@ -6,6 +6,4 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./config/varnish/default.vcl:/etc/varnish/config/custom.vcl
-    links:
-      - nginx
+      - ../config/varnish/default.vcl:/etc/varnish/config/custom.vcl

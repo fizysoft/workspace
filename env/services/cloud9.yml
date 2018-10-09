@@ -9,5 +9,10 @@ services:
       USERNAME:
       PASSWORD:
     volumes:
-      - ../projects:/workspace
+      #- ../../projects:/workspace
+      - data-volume:/workspace
       - ~/.ssh:/root/.ssh
+
+volumes:
+  data-volume:
+    driver: local

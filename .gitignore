@@ -8,3 +8,5 @@ mailhog/email/*
 mysql/data/*
 mysql/dbdump/*
 ssl/*
+log/*
+portainer/*
