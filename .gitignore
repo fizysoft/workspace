@@ -4,9 +4,10 @@ projects/m1/*
 projects/m2/*
 projects/others/*
 projects/log/*
-mailhog/email/*
+mailhog/storage/*
 mysql/data/*
 mysql/dbdump/*
 ssl/*
 log/*
 portainer/*
+redis/*
