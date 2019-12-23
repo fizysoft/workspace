@@ -1,0 +1,24 @@
+version: '3'
+services:
+  afpd:
+    container_name: afpd
+    image: cptactionhank/netatalk
+    ports:
+      - "549:548"
+    volumes:
+      #- ${WORKSPACE_PATH}/projects:/home/www/projects  # UNIX only
+      - data:/home/www/data  # MAC only
+      - ${WORKSPACE_PATH}/env/config/afpd/afp.conf:/etc/afp.conf
+    environment:
+      - AFP_USER=www
+      - AFP_PASSWORD=balance08
+      - AFP_UID=5353
+      - AFP_GID=5353
+    networks:
+      - default
+
+volumes:                 # MAC only
+  data:                  # MAC only
+    external: true       # MAC only
+  database:              # MAC only
+    external: true       # MAC only
