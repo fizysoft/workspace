@@ -1,0 +1,6 @@
+#!/bin/bash
+(cd ~/workspace/env; docker-compose -f ~/workspace/env/services/samba.yml up -d)
+sudo mkdir /Volumes/Projects
+sudo chown $(id -un):$(id -gn) /Volumes/Projects
+sudo ifconfig lo0 127.0.0.2 alias up
+sudo mount_smbfs -N //guest@127.0.0.2/Projects /Volumes/Projects
