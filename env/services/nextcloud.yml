@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  owncloud:
+    container_name: nextcloud
+    image: nextcloud
+    # logging:
+    #   driver: "none"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      #- ${WORKSPACE_PATH}/projects:/home/www/projects  # UNIX only
+      # - nextcloud:/home/www/data  # MAC only
+    networks:
+      - default
+
+# volumes:
+#   nextcloud:
+#     name: nextcloud

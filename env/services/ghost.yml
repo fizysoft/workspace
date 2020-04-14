@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  ghost:
+    container_name: ghost 
+    image: ghost
+    # logging:
+    #   driver: "none"
+    ports:
+      - "80:2368"
+    #volumes:
+    #  - ${WORKSPACE_PATH}/projects:/var/www    # UNIX only
+      #- ${WORKSPACE_PATH}/projects:/var/www    # UNIX only
+    #environment:
+    #  - url=http://localhost:80
+    networks:
+      - default

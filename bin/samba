@@ -1,6 +1,30 @@
 #!/bin/bash
-(cd ~/workspace/env; docker-compose -f ~/workspace/env/services/samba.yml up -d)
-sudo mkdir /Volumes/Projects
-sudo chown $(id -un):$(id -gn) /Volumes/Projects
-sudo ifconfig lo0 127.0.0.2 alias up
-sudo mount_smbfs -N //guest@127.0.0.2/Projects /Volumes/Projects
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  if [ ! "$(docker ps -q -f name=samba)" ]; then
+      (cd ~/workspace/env; docker-compose -f ~/workspace/env/services/samba.yml up -d)
+  else
+      docker restart samba
+  fi
+#  if [[ -d /Volumes/Projects ]]
+#  then
+#      sudo umount /Volumes/Projects
+#      echo "Unmount Project volume"
+#  fi
+#  sudo mkdir /Volumes/Projects
+#  sudo chown $(id -un):$(id -gn) /Volumes/Projects
+
+  if [[ ! $(ifconfig | grep 127.0.0.2)  ]]
+  then
+      sudo ifconfig lo0 127.0.0.2 alias up
+      echo "Alias localhost to 127.0.0.2"
+  fi
+
+  if [[ ! -d ~/workspace/projects ]]
+  then
+      mkdir ~/workspace/projects
+      echo "Created workspace/projects folder"
+  fi
+  sudo mount -t smbfs //guest:@127.0.0.2/Projects ~/workspace/projects
+  echo "Mounted Projects Volume"
+  echo "Created workspace/projects folder sucessful"
+fi

@@ -1,15 +1,21 @@
-version: '3'
+version: '3.7'
 services:
   nginx:
     container_name: nginx
     image: hoadx/nginx
+    # logging:
+    #   driver: "none"
     ports:
       - "80:80"
     volumes:
       - ${WORKSPACE_PATH}/env/config/nginx/conf.d:/etc/nginx/conf.d
       - ${WORKSPACE_PATH}/env/config/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ${WORKSPACE_PATH}/log/nginx:/var/log/nginx
-      - ${WORKSPACE_PATH}/projects:/var/www    # UNIX only
-      #- data:/var/www     # MAC only
+      #- ${WORKSPACE_PATH}/projects:/var/www    # UNIX only
+      - data:/var/www     # MAC only
     networks:
       - default
+
+volumes:                 # MAC only
+  data:                  # MAC only
+    name: data           # MAC only

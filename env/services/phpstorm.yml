@@ -3,17 +3,23 @@
 # Open XQuartz Preferences -> Security tab, tick `Authenticate connections` and `Allow connections from network clients` 
 # Run below command in Terminal:
 # export DISPLAY=:0 && xhost + && export DISPLAY=$(ifconfig | grep 'inet ' | grep -m 1 -v '127.0.0.1' | awk '{print $2}'):0 
-version: '3'
+version: '3.7'
 services:
   phpstorm:
     container_name: phpstorm
     image: hoadx/phpstorm
+    # logging:
+    #   driver: "none"
     volumes:
       - ~/.PhpStorm2017.2:/home/www/.PhpStorm2017.2
       - /tmp/.X11-unix:/tmp/.X11-unix
-      #- data:/home/www/projects  # MAC only
-      - ${WORKSPACE_PATH}/projects:/home/www/projects   # UNIX only
+      - data:/home/www/projects  # MAC only
+      #- ${WORKSPACE_PATH}/projects:/home/www/projects   # UNIX only
     environment:
       - DISPLAY=$DISPLAY
     networks:
       - default
+
+volumes:                 # MAC only
+  data:                  # MAC only
+    name: data           # MAC only

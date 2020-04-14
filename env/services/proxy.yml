@@ -1,8 +1,10 @@
-version: '3'
+version: '3.7'
 services:
   proxy:
     container_name: proxy
     image: nginx:alpine
+    # logging:
+    #   driver: "none"
     ports:
       - "443:443"
     environment:

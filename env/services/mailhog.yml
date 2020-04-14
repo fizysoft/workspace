@@ -1,15 +1,21 @@
-version: '3'
+version: '3.7'
 services:
   mailhog:
     container_name: mailhog
     image: mailhog/mailhog:latest
+    # logging:
+    #   driver: "none"
     ports:
       - 8025:8025
       - 1025:1025
     volumes:
-        - ${WORKSPACE_PATH}/mailhog/storage:/mnt/storage
+        - mailhog:/mnt/storage
     environment:
       - MH_STORAGE=maildir
       - MH_MAILDIR_PATH=/mnt/storage
     networks:
       - default
+
+volumes:
+  mailhog:
+    name: mailhog

@@ -1,8 +1,10 @@
-version: '3'
+version: '3.7'
 services:
   afpd:
     container_name: afpd
     image: cptactionhank/netatalk
+    # logging:
+    #   driver: "none"
     ports:
       - "549:548"
     volumes:
@@ -15,10 +17,12 @@ services:
       - AFP_UID=5353
       - AFP_GID=5353
     networks:
-      - default
+      - frontend
 
 volumes:                 # MAC only
   data:                  # MAC only
-    external: true       # MAC only
-  database:              # MAC only
-    external: true       # MAC only
+    name: data           # MAC only
+
+networks:
+  frontend:
+    name: frontend

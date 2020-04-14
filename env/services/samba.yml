@@ -1,8 +1,10 @@
-version: '3'
+version: '3.7'
 services:
   samba:
     container_name: samba
     image: dperson/samba
+    # logging:
+    #   driver: "none"
     ports:
       - "137:137/udp"
       - "138:138/udp"
@@ -14,8 +16,10 @@ services:
       #- ${WORKSPACE_PATH}/env/config/afpd/afp.conf:/etc/afp.conf
     environment:
 #      - USER="www balance08 5353 www 5353"
-      - USERID=5353
-      - GROUPID=5353
+      - USERID=5000
+      - GROUPID=5000
+      - RECYCLE=1
+#      - NMBD=1
       - SHARE="Projects /home/www/data yes no yes all"
     command: ['-p', '-n']
     networks:
@@ -23,6 +27,4 @@ services:
 
 volumes:                 # MAC only
   data:                  # MAC only
-    external: true       # MAC only
-  database:              # MAC only
-    external: true       # MAC only
+    name: data
