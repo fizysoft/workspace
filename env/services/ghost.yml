@@ -12,5 +12,4 @@ services:
       #- ${WORKSPACE_PATH}/projects:/var/www    # UNIX only
     #environment:
     #  - url=http://localhost:80
-    networks:
-      - default
+    network_mode: "bridge"

@@ -9,5 +9,4 @@ services:
       - "80:80"
     volumes:
       - ${WORKSPACE_PATH}/env/config/varnish/default.vcl:/etc/varnish/config/custom.vcl
-    networks:
-      - default
+    network_mode: "bridge"

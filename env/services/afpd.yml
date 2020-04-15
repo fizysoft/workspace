@@ -16,13 +16,8 @@ services:
       - AFP_PASSWORD=balance08
       - AFP_UID=5353
       - AFP_GID=5353
-    networks:
-      - frontend
+    network_mode: "bridge"
 
 volumes:                 # MAC only
   data:                  # MAC only
     name: data           # MAC only
-
-networks:
-  frontend:
-    name: frontend

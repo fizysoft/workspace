@@ -10,6 +10,7 @@ services:
     cap_add:
       - NET_ADMIN
 #    network_mode: "host"
+    network_mode: "bridge"
     ports:
       - 500:500/udp
       - 4500:4500/udp

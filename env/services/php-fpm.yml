@@ -13,8 +13,7 @@ services:
       #- ./config/phpfpm/ioncube.php.ini:/usr/local/etc/php/conf.d/00ioncube.php.ini
       #- ${WORKSPACE_PATH}/projects:/var/www    # UNIX only
       - data:/var/www    # MAC only
-    networks:
-      - default
+    network_mode: "bridge"
 
 volumes:                 # MAC only
   data:                  # MAC only

@@ -9,8 +9,7 @@ services:
       - redis:/data
     ports:
       - "6379:6379"
-    networks:
-      - default
+    network_mode: "bridge"
 
 volumes:
   redis:

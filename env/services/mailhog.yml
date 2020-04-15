@@ -13,8 +13,7 @@ services:
     environment:
       - MH_STORAGE=maildir
       - MH_MAILDIR_PATH=/mnt/storage
-    networks:
-      - default
+    network_mode: "bridge"
 
 volumes:
   mailhog:

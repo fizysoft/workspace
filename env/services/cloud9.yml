@@ -25,14 +25,8 @@ services:
       timeout: 3s
       retries: 3
       start_period: 15s
-    # network_mode: "bridge"
-    # networks:
-    #   - frontend
+    network_mode: "bridge"
 
 volumes:                 # MAC only
   data:                  # MAC only
     name: data           # MAC only
-
-# networks:
-#   frontend:
-#     name: frontend

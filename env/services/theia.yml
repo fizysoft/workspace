@@ -25,8 +25,7 @@ services:
 #      timeout: 3s
 #      retries: 3
 #      start_period: 15s
-    networks:
-      - default
+    network_mode: "bridge"
 
 volumes:                 # MAC only
   data:                  # MAC only

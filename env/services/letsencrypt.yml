@@ -11,8 +11,7 @@ services:
     volumes:
       - letsencrypt:/var/.well-known
       - ${WORKSPACE_PATH}/ssl:/etc/letsencrypt
-    networks:
-      - default
+    network_mode: "bridge"
 
 volumes:
   letsencrypt:

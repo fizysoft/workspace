@@ -13,8 +13,7 @@ services:
       - ${WORKSPACE_PATH}/log/nginx:/var/log/nginx
       #- ${WORKSPACE_PATH}/projects:/var/www    # UNIX only
       - data:/var/www     # MAC only
-    networks:
-      - default
+    network_mode: "bridge"
 
 volumes:                 # MAC only
   data:                  # MAC only

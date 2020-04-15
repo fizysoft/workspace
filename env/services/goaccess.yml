@@ -12,5 +12,4 @@ services:
       - ${WORKSPACE_PATH}/projects/others:/srv/report   # output /srv/report/goaccess.html
       - ${WORKSPACE_PATH}/log:/srv/logs
 #    command: ["goaccess", "--no-global-config", "--real-time-html", "--config-file=/srv/data/goaccess.conf", "--log-file=/srv/logs/access.log"]
-    networks:
-      - default
+    network_mode: "bridge"

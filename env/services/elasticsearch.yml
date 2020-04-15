@@ -14,5 +14,4 @@ services:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
       - ${WORKSPACE_PATH}/elasticsearch/plugins:/usr/share/elasticsearch/plugins
-    networks:
-      - default
+    network_mode: "bridge"

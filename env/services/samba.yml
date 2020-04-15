@@ -21,9 +21,8 @@ services:
       - RECYCLE=1
 #      - NMBD=1
       - SHARE="Projects /home/www/data yes no yes all"
-    command: ['-p', '-n']
-    networks:
-      - default
+#    command: ['-p', '-n']
+    network_mode: "bridge"
 
 volumes:                 # MAC only
   data:                  # MAC only

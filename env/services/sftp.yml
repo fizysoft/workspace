@@ -11,8 +11,7 @@ services:
       #- ${WORKSPACE_PATH}/projects:/home/www/projects  # UNIX only
       - data:/home/www/data  # MAC only
       - ${WORKSPACE_PATH}/env/config/sftp/users.conf:/etc/sftp-users.conf:ro
-    networks:
-      - default
+    network_mode: "bridge"
 
 volumes:                 # MAC only
   data:                  # MAC only

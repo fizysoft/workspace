@@ -17,8 +17,7 @@ services:
       #- ${WORKSPACE_PATH}/projects:/home/www/projects   # UNIX only
     environment:
       - DISPLAY=$DISPLAY
-    networks:
-      - default
+    network_mode: "bridge"
 
 volumes:                 # MAC only
   data:                  # MAC only

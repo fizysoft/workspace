@@ -11,8 +11,7 @@ services:
     volumes:
       #- ${WORKSPACE_PATH}/projects:/home/www/projects  # UNIX only
       # - nextcloud:/home/www/data  # MAC only
-    networks:
-      - default
+    network_mode: "bridge"
 
 # volumes:
 #   nextcloud:
