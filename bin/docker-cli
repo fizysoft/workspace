@@ -1,0 +1,9 @@
+#!/bin/bash
+if [[ "$OSTYPE" == "darwin"* ]]; then
+
+  docker run -it --rm --network none --name docker \
+    -v data:/workspace \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    docker:latest sh
+
+fi
