@@ -2,20 +2,21 @@ version: '3.7'
 services:
   mysql:
     container_name: mysql
-    image: mysql:5.6
+    image: mysql:8.0
+    #image: mysql:5.6
     # logging:
     #   driver: "none"
     ports:
       - "3306:3306"
     volumes:
-      - mysql:/var/lib/mysql
-      - ${WORKSPACE_PATH}/mysql/dbdump:/dbdump
-      - ${WORKSPACE_PATH}/env/config/mysql/conf.d:/etc/mysql/conf.d
+        - mysql:/var/lib/mysql
+        - ${WORKSPACE_PATH}/env/config/mysql/8.0/conf.d:/etc/mysql/conf.d
+        - ${WORKSPACE_PATH}/mysql/dbdump:/dbdump
     environment:
       #- MYSQL_RANDOM_ROOT_PASSWORD=yes
-      - MYSQL_ROOT_PASSWORD=balance08
+      - MYSQL_ROOT_PASSWORD=hoadx123
     network_mode: "bridge"
 
 volumes:
   mysql:
-    name: mysql
+    name: mysql80

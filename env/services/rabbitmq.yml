@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.9-alpine
+    hostname: rabbitmq
+    # logging:
+    #   driver: "none"
+    ports:
+      - "5672:5672"
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbitmq
+      - RABBITMQ_DEFAULT_PASS=rabbitmq
+    network_mode: "bridge"
+
+volumes:
+    rabbitmq:
+      name: rabbitmq

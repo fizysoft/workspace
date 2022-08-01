@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   odoo:
-    image: odoo:13
+    image: odoo:15
     container_name: odoo
     ports:
       - "8069:8069"
@@ -9,6 +9,8 @@ services:
     - HOST=postgres
     - USER=odoo
     - PASSWORD=odoo
+      #command: "/usr/bin/odoo --db_host postgres --db_port 5432 --db_user odoo --db_password odoo --logfile='/mnt/extra-addons/odoo.log' --dev=all "
+      #command: "/usr/bin/odoo --db_host postgres --db_port 5432 --db_user odoo --db_password odoo --logfile='/mnt/extra-addons/odoo.log' --dev=all --no-database-list"
     volumes:
       - odoo:/var/lib/odoo
       - ${WORKSPACE_PATH}/odoo:/mnt/extra-addons

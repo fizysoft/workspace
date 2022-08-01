@@ -2,14 +2,20 @@ version: '3.7'
 services:
   php-fpm:
     container_name: php-fpm
-    image: hoadx/php:7.1-magento
+      #image: hoadx/php-fpm:7.4-magento
+    image: hoadx/php-fpm:8.1-magento
     #image: hoadx/php:5.6-magento
     # logging:
     #   driver: "none"
+    environment:
+       - CHANGE_OWNER=1
+       - USER_ID=5000       # set user id; ${USERID:-id -u}
+       - GROUP_ID=5000      # set group id; ${GROUPID:-id -g}
     ports:
       - "9000:9000"
     volumes:
       - ${WORKSPACE_PATH}/env/config/phpfpm/magento.php.ini:/usr/local/etc/php/conf.d/zzz.ini
+      - ./config/phpfpm/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini   # Enable xdebug
       #- ./config/phpfpm/ioncube.php.ini:/usr/local/etc/php/conf.d/00ioncube.php.ini
       #- ${WORKSPACE_PATH}/projects:/var/www    # UNIX only
       - data:/var/www    # MAC only

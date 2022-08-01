@@ -6,18 +6,21 @@ services:
         container_name: XO_server
         ports:
             - "8000:8000"
+            - "8443:8443"
         depends_on:
             - redis
         environment:
             - DEBUG=xo:main
             - NODE_ENV=production
             - XOA_PLAN=5
-            # To enable XO superuser features (ex: NFS mount) on the host
-            # uncomment the following lines, it will start XO as superuser
-            # and enable the privileged capabilities for this container (access
-            # host devices, ...) NB: it's a security issue, so be warned !
-            - USER=root
+            - XO_HTTP_REDIRECTTOHTTPS=true
+            - XO_HTTP_LISTEN_PORT=8000
+            - XO_HTTPS_LISTEN_PORT=8443
+            - XO_HTTPS_LISTEN_AUTOCERT=true
         #privileged: true
+        # SYS_ADMIN should be enough capability to use NFS mount
+        cap_add:
+            - SYS_ADMIN
         volumes:
             - xo-server:/storage
         logging: &logging

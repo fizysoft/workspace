@@ -6,10 +6,10 @@ services:
     # logging:
     #   driver: "none"
     ports:
-      - "137:137/udp"
-      - "138:138/udp"
-      - "139:139"
-      - "445:445"
+          - "137:137/udp"
+          - "138:138/udp"
+          - "139:139"
+          - "445:445"
     volumes:
       #- ${WORKSPACE_PATH}/projects:/home/www/projects  # UNIX only
       - data:/home/www/data  # MAC only
@@ -21,8 +21,9 @@ services:
       - RECYCLE=1
 #      - NMBD=1
       - SHARE="Projects /home/www/data yes no yes all"
-#    command: ['-p', '-n']
-    network_mode: "bridge"
+    command: ['-p', '-n']
+      #network_mode: "bridge"
+      #    network_mode: "host"
 
 volumes:                 # MAC only
   data:                  # MAC only

@@ -5,12 +5,16 @@ services:
     image: hoadx/nginx
     # logging:
     #   driver: "none"
+    environment:
+      - CHANGE_OWNER=1
+      - USER_ID=5000       # set user id; ${USERID:-id -u}
+      - GROUP_ID=5000      # set group id; ${GROUPID:-id -g}
     ports:
       - "80:80"
     volumes:
       - ${WORKSPACE_PATH}/env/config/nginx/conf.d:/etc/nginx/conf.d
-      - ${WORKSPACE_PATH}/env/config/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ${WORKSPACE_PATH}/log/nginx:/var/log/nginx
+      #- ${WORKSPACE_PATH}/env/config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      #- ${WORKSPACE_PATH}/log/nginx:/var/log/nginx
       #- ${WORKSPACE_PATH}/projects:/var/www    # UNIX only
       - data:/var/www     # MAC only
     network_mode: "bridge"

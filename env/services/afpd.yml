@@ -13,9 +13,9 @@ services:
       - ${WORKSPACE_PATH}/env/config/afpd/afp.conf:/etc/afp.conf
     environment:
       - AFP_USER=www
-      - AFP_PASSWORD=balance08
-      - AFP_UID=5353
-      - AFP_GID=5353
+      - AFP_PASSWORD=hoadx123
+      - AFP_UID=5000
+      - AFP_GID=5000
     network_mode: "bridge"
 
 volumes:                 # MAC only

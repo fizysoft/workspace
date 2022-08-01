@@ -2,7 +2,7 @@ version: '3.7'
 services:
   theia:
     container_name: theia
-    image: hoadx/theia   # supported tag name: latest, alpine, slim, usermode
+    image: hoadx/theia:latest   # supported tag name: latest, alpine, slim, usermode
     init: true
     # logging:
     #   driver: "none"
@@ -25,7 +25,8 @@ services:
 #      timeout: 3s
 #      retries: 3
 #      start_period: 15s
-    network_mode: "bridge"
+    command: "tail -f /dev/null"
+#    network_mode: "bridge"
 
 volumes:                 # MAC only
   data:                  # MAC only

@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  docker:
+    container_name: docker
+    image: docker/compose
+    init: true
+    # logging:
+    #   driver: "none"
+    environment:
+#      - USERNAME=hoadx          # Access authentication user
+#      - PASSWORD=hoadx          # Access authentication password
+      - CHANGE_OWNER=1
+      - USERID=5000       # set user id; only use if CHANGE_OWNER=1
+      - GROUPID=5000      # set group id; only use if CHANGE_OWNER=1
+      - WORKSPACE=/workspace
+    volumes:
+      #- ${WORKSPACE_PATH}/projects:/workspace   # UNIX only
+      - /var/run/docker.sock:/var/run/docker.sock
+      - data:/workspace
+      #- ~/.ssh:/home/theia/.ssh
+    command: "tail -f /dev/null"
+    network_mode: "bridge"
+
+volumes:                 # MAC only
+  data:                  # MAC only
+    name: data
+

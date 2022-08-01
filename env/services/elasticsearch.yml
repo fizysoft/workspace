@@ -2,7 +2,7 @@ version: '3.7'
 services:
   elasticsearch:
     container_name: elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:5.2.2
+    image: elasticsearch:7.17.5
     # logging:
     #   driver: "none"
     ports:
@@ -13,5 +13,5 @@ services:
       - xpack.security.enabled=false
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
-      - ${WORKSPACE_PATH}/elasticsearch/plugins:/usr/share/elasticsearch/plugins
+      - ${WORKSPACE_PATH}/elasticsearch/7.17.5/plugins:/usr/share/elasticsearch/plugins
     network_mode: "bridge"
