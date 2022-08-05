@@ -3,7 +3,8 @@
 default_authentication_plugin=mysql_native_password
 
 ### Allow import big file
-max_allowed_packet=250M
+max_allowed_packet=1073741824
+net_buffer_length=1048576
 
 
 ### CACHES AND LIMITS #

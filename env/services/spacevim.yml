@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  theia:
+    container_name: spacevim
+    image: spacevim/spacevim
+    init: true
+    # logging:
+    #   driver: "none"
+    ports:
+      - "3000:3000"        # bind port 3000
+    environment:
+#      - USERNAME=hoadx          # Access authentication user
+#      - PASSWORD=hoadx          # Access authentication password
+      - CHANGE_OWNER=1
+      - USERID=5000       # set user id; only use if CHANGE_OWNER=1
+      - GROUPID=5000      # set group id; only use if CHANGE_OWNER=1
+      - WORKSPACE=/workspace
+    volumes:
+      #- ${WORKSPACE_PATH}/projects:/workspace   # UNIX only
+      - data:/workspace
+      - ~/.ssh:/home/theia/.ssh
+#    healthcheck:
+#      test: ["CMD", "curl", "-f", "localhost:3000"] 
+#      interval: 60s
+#      timeout: 3s
+#      retries: 3
+#      start_period: 15s
+    command: "tail -f /dev/null"
+#    network_mode: "bridge"
+
+volumes:                 # MAC only
+  data:                  # MAC only
+    name: data
+

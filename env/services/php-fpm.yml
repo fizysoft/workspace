@@ -13,9 +13,10 @@ services:
        - GROUP_ID=5000      # set group id; ${GROUPID:-id -g}
     ports:
       - "9000:9000"
+      - "9003:9003"
     volumes:
       - ${WORKSPACE_PATH}/env/config/phpfpm/magento.php.ini:/usr/local/etc/php/conf.d/zzz.ini
-      - ./config/phpfpm/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini   # Enable xdebug
+      - ${WORKSPACE_PATH}/env/config/phpfpm/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini   # Enable xdebug
       #- ./config/phpfpm/ioncube.php.ini:/usr/local/etc/php/conf.d/00ioncube.php.ini
       #- ${WORKSPACE_PATH}/projects:/var/www    # UNIX only
       - data:/var/www    # MAC only

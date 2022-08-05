@@ -9,7 +9,7 @@ services:
       - "9200:9200"
       - "9600:9600"
     environment:
-      #      - http.host=0.0.0.0
+      - network.host=0.0.0.0
       - cluster.name=opensearch-cluster
       - node.name=opensearch-node1
       - bootstrap.memory_lock=true # along with the memlock settings below, disables swapping
@@ -17,7 +17,14 @@ services:
       - "DISABLE_INSTALL_DEMO_CONFIG=true"
       - "DISABLE_SECURITY_PLUGIN=true"
       - "discovery.type=single-node"
+        #      - OPENSEARCH_PATH_CONF="/usr/share/opensearch/config/opensearch_custom.yml"
     volumes:
-        - ${WORKSPACE_PATH}/opensearch/1.2.4/plugins/analysis-icu:/usr/share/opensearch/plugins/analysis-icu
-        - ${WORKSPACE_PATH}/opensearch/1.2.4/plugins/analysis-phonetic:/usr/share/opensearch/plugins/analysis-phonetic
+      - opensearch-data:/usr/share/opensearch/data
+      - ${WORKSPACE_PATH}/env/config/opensearch/1.2.4/config/opensearch.yml:/usr/share/opensearch/config/opensearch.yml
+      - ${WORKSPACE_PATH}/opensearch/1.2.4/plugins/analysis-icu:/usr/share/opensearch/plugins/analysis-icu
+      - ${WORKSPACE_PATH}/opensearch/1.2.4/plugins/analysis-phonetic:/usr/share/opensearch/plugins/analysis-phonetic
     network_mode: "bridge"
+
+volumes:
+  opensearch-data:
+    name: opensearch-data
