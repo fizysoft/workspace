@@ -3,7 +3,7 @@ services:
   portainer:
     container_name: portainer
     image: portainer/portainer
-    restart: unless-stopped
+      #restart: unless-stopped
     # logging:
     #   driver: "none"
     ports:

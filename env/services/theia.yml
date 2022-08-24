@@ -8,6 +8,7 @@ services:
     #   driver: "none"
     ports:
       - "3000:3000"        # bind port 3000
+      - "9003:9003"        # Open port for XDebug
     environment:
 #      - USERNAME=hoadx          # Access authentication user
 #      - PASSWORD=hoadx          # Access authentication password
@@ -26,7 +27,7 @@ services:
 #      retries: 3
 #      start_period: 15s
     command: "tail -f /dev/null"
-#    network_mode: "bridge"
+    network_mode: "bridge"
 
 volumes:                 # MAC only
   data:                  # MAC only

@@ -7,6 +7,7 @@ services:
     # logging:
     #   driver: "none"
     environment:
+      - SSH_AUTH_SOCK=/run/host-services/ssh-auth.sock
 #      - USERNAME=hoadx          # Access authentication user
 #      - PASSWORD=hoadx          # Access authentication password
       - CHANGE_OWNER=1
@@ -14,6 +15,9 @@ services:
       - GROUPID=5000      # set group id; only use if CHANGE_OWNER=1
       - WORKSPACE=/workspace
     volumes:
+      - type: bind
+        source: /run/host-services/ssh-auth.sock
+        target: /run/host-services/ssh-auth.sock
       #- ${WORKSPACE_PATH}/projects:/workspace   # UNIX only
       - /var/run/docker.sock:/var/run/docker.sock
       - data:/workspace

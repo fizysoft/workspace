@@ -16,6 +16,7 @@ services:
       - AFP_PASSWORD=hoadx123
       - AFP_UID=5000
       - AFP_GID=5000
+        #network_mode: "host"
     network_mode: "bridge"
 
 volumes:                 # MAC only

@@ -8,13 +8,19 @@ services:
     # logging:
     #   driver: "none"
     environment:
+       - TERM=xterm-256color
+       - SSH_AUTH_SOCK=/run/host-services/ssh-auth.sock
        - CHANGE_OWNER=1
        - USER_ID=5000       # set user id; ${USERID:-id -u}
        - GROUP_ID=5000      # set group id; ${GROUPID:-id -g}
     ports:
       - "9000:9000"
-      - "9003:9003"
+        #      - "9003:9003"
+      - "2222:22"
     volumes:
+      - type: bind
+        source: /run/host-services/ssh-auth.sock
+        target: /run/host-services/ssh-auth.sock
       - ${WORKSPACE_PATH}/env/config/phpfpm/magento.php.ini:/usr/local/etc/php/conf.d/zzz.ini
       - ${WORKSPACE_PATH}/env/config/phpfpm/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini   # Enable xdebug
       #- ./config/phpfpm/ioncube.php.ini:/usr/local/etc/php/conf.d/00ioncube.php.ini
